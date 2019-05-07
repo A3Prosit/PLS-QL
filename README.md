@@ -2,7 +2,7 @@
 
   
 
--   Contrainte d’intégrité *
+-   Contrainte d’intégrité * : Mécanismes pour assurer la cohésion des données par le biais de contraintes dans une SGBD.
     
 -   Curseurs
     
@@ -160,7 +160,8 @@ Normaliser des modèles permet de vérifier la robustesse d'une conception et d'
 ![](https://image.noelshack.com/fichiers/2019/19/1/1557152418-capture4.png)
 
 ## Fonctions et procédures stockées
-
+**Procédure** : Programme PL/SQL nommé, compilé et stocké dans la base.
+**Fonction** : Procédure retournant une valeur.
 - Procédure : Série instructions SQL désingée par un nom, enregistré dans la BDD. Contraitement aux requêtes préparées, qui ne sont gardées en mémire pour la session courante, les procédures stockées le sont de manières durables.
 - Il faut prévoir un délimiteur avec un | 
 
@@ -170,7 +171,7 @@ CREATE PROCEDURE afficher_races()
     -- toujours pas de paramètres, toujours des parenthèses
 BEGIN
     SELECT id, nom, espece_id, prix
-    FROM Race;  -- Cette fois, le ; ne nous embêtera pas
+    FROM R1ace;  -- Cette fois, le ; ne nous embêtera pas
 END|            -- Et on termine bien sûr la commande CREATE PROCEDURE par notre nouveau délimiteur
 
 
@@ -319,9 +320,8 @@ Décomposé en bloc :
 - BEGIN...END : Section éxécutable
 - EXCEPTION : Traitement des exceptions
 
-## Fonctions & cie
-**Procédure** : Programme PL/SQL nommé, compilé et stocké dans la base.
-**Fonction** : Procédure retournant une valeur.
+## Package
+
 **Package** : Module de programmes incluant procédures et / ou fonctions fonctionnellement dépendantes. Il est composé de deux parties :
 - La spécification (introduite par CREATE PACKAGE), liste  des entêtes contenues dans le package
 - Le corps du package (Introduit par CREATE PACKAGE BODY) qui  contient le code des procédures/fonctions
