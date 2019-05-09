@@ -240,23 +240,30 @@ BEGIN
 END;
 ```
 
+
 ### **Déclarations implicite** :
 
--  Il existe une syntaxe qui permet de se passer des instructions OPEN, FETCH et CLOSE. On utilise toujours la boucle FOR :
+-  Il existe une syntaxe qui permet de se passer des instructions OPEN, FETCH et CLOSE. On utilise toujours la boucle FOR ( c'est donc une manière de détourner les explicite en implicite):
 
 ```SQL
 DECLARE
 BEGIN
-FOR curseur_EMPLOYE IN (SELECT * FROM EMP WHERE JOB = 'MANAGER')
+FOR <<variable>> IN (SELECT * FROM EMP WHERE JOB = 'MANAGER')
 LOOP
 
-DBMS_OUTPUT.PUT_LINE('L''employé ' || curseur_EMPLOYE.ENAME ||
-' a un salaire de ' || curseur_EMPLOYE.SAL ||
-'. Le numéro de son Manager est ' || curseur_EMPLOYE.MGR);
+DBMS_OUTPUT.PUT_LINE('L''employé ' || <<variable>>.ENAME ||
+' a un salaire de ' || <<variable>>.SAL ||
+'. Le numéro de son Manager est ' || <<variable>>.MGR);
 
 END LOOP;
 END;
 ```
+
+- Dans les implicites, il y a également les REF CURSOR : Curseur déjà enregistrés dans des requêtes | que l'on peut créer (évite surplus)
+	- Strong : Type de retour
+	- Weak : Pas de type de retour
+
+
 
 ### Attributs de curseur :
 
