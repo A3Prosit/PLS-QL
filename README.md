@@ -327,6 +327,21 @@ Décomposé en bloc :
 - BEGIN...END : Section éxécutable
 - EXCEPTION : Traitement des exceptions
 
+Exemple : 
+```SQL
+
+DECLARE PRAGMA EXCEPTION NOM_INIT(nom)
+DECLARE <nom> EXCEPTION
+BEGIN 
+IF (Condition)
+RAISE <nom>
+
+EXCEPTION
+WHEN <name> THEN
+...
+END;
+```
+
 ## Package
 
 **Package** : Module de programmes incluant procédures et / ou fonctions fonctionnellement dépendantes. Il est composé de deux parties :
